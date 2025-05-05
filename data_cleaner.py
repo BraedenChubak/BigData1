@@ -6,7 +6,8 @@ import numpy as np
 df = pd.read_csv('covid19.csv')
 df.columns = df.columns.str.strip() # Get rid of trailing spaces in column names
 df.replace([np.inf], 0, inplace=True) # gets rid of some infinities
-print(df['Confirmed'].describe().apply(lambda x: format(x, 'f'))) # the apply stops scientific notation
+df.to_csv('covid19_clean.csv', index=False)
+print(df['Confirmed'].describe().apply(lambda x: format(x, 'f'))) # the ".apply(lambda x: format(x, 'f'))"" stops scientific notation
 print(df['Deaths'].describe().apply(lambda x: format(x, 'f')))
 print(df['Recovered'].describe().apply(lambda x: format(x, 'f')))
 print(df['Active'].describe().apply(lambda x: format(x, 'f')))
